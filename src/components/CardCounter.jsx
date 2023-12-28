@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
+import { useTask } from "../store/tasksStore.js"
 
 export default function CardCounter() {
 
   const [totalRecords, setTotalRecords] = useState(0)
   const [totalCompleted, setTotalCompleted] = useState(0)
 
+  const taskList = useTask(state => state.taskList)
+
   useEffect(() => { 
     getTaskCounter()
-  }, [])
+  }, [taskList])
 
   const getTaskCounter = async () =>{
-    const result = await (await fetch('/api/task')).json()
-    setTotalRecords(result.total)
-    const completed = result.documents.filter(task=>task.isCompleted)
+    setTotalRecords(taskList.length)
+    const completed = taskList.filter(task=>task.isCompleted)
     setTotalCompleted(completed.length)
   }
 

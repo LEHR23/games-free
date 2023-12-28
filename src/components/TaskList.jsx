@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Item from "./Item.jsx"
+import { useTask } from "../store/tasksStore.js"
 
 const TaskList = ()=>{
 
-  const [todos, setTodos] = useState([])
+  const {taskList, setTaskList } = useTask(state => state)
 
   useEffect(()=>{
     getTodos()
@@ -12,13 +13,13 @@ const TaskList = ()=>{
   async function getTodos(){
     await fetch('/api/task').then(async(response)=>{
       const result = await response.json()
-      setTodos(result.documents)
+      setTaskList(result.documents)
     }).catch(error=>console.error(error))
   }
 
   return <>{
-    todos.map(function(todo){
-      return <Item key={todo.$id} idTask={todo.$id} title={todo.title} completed={todo.isCompleted}/>
+    taskList.map(function(todo){
+      return <Item key={todo.$id} todo={todo}/>
     })
   }</>
 }

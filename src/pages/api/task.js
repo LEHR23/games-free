@@ -65,7 +65,7 @@ export async function DELETE({ params, request } ) {
 
 export async function PUT({ params, request } ) {
   const {idTask, newTitle, isCompleted} = await request.json()
-  console.log(idTask, newTitle)
+  console.log(idTask, newTitle, isCompleted)
   const promise = databases.updateDocument(import.meta.env.APPWRITE_DATABASE, '658cc01e03cf6fd4f18f', idTask, {title: newTitle, isCompleted: isCompleted})
   let response = await promise.then(function (res) {
     return new Response(JSON.stringify(res), {
