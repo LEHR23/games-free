@@ -64,24 +64,24 @@ const Item = ({ todo }) => {
     return <><form className="flex justify-between mt-2">
       <input type="text" maxLength='100'
         className="flex-1 rounded-sm bg-transparent border border-white px-2 py-2 text-white text-lg"
-        value={newTitle} onChange={(event) => { 
-            setNewTitle(event.target.value) 
-          }} onKeyUpCapture={()=>{
-            if(event.key === 'Escape'){
-              setWantToEdit(false)
-            }
-          }}/>
+        value={newTitle} onChange={(event) => {
+          setNewTitle(event.target.value)
+        }} onKeyUpCapture={() => {
+          if (event.key === 'Escape') {
+            setWantToEdit(false)
+          }
+        }} />
       <input type="submit" value="Add" onClick={editTask} className="hidden" />
     </form>
-    {
-      alert && <Alert/>
-    }
+      {
+        alert && <Alert />
+      }
     </>
   }
 
   return <div className="flex justify-between py-2 px-2 rounded-md hover:bg-zinc-900">
     <div className="flex justify-center items-center">
-      <div className={`size-2 px-1 py-1 mr-2 border rounded-full cursor-pointer ${isCompleted ? 'bg-green-200' : ''}`}
+      <div className={`size-5 px-1 py-1 mr-2 border rounded-full cursor-pointer ${isCompleted ? 'bg-green-200' : ''}`}
         onClick={handleCheckbox} />
       <p className={`text-lg text-white break-words  ${isCompleted ? 'line-through' : ''}`}>{todo.title}</p>
     </div>
