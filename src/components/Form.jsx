@@ -23,7 +23,7 @@ const Form = ()=>{
   }
 
   return <form className="flex justify-between mt-2">
-    <input type="text" className="flex-1 rounded-l-lg py-2 px-2" value={title} onChange={(event)=>{setTitel(event.target.value)}}/>
+    <input type="text" className="flex-1 rounded-l-lg py-2 px-2 text-lg" value={title} onChange={(event)=>{setTitel(event.target.value)}}/>
     <input type="submit" value="Add" onClick={addTask} className="p-2 bg-black text-white cursor-pointer rounded-r-lg"/>
   </form>
 }

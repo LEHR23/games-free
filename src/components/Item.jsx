@@ -53,7 +53,7 @@ const Item = ({ todo }) => {
 
   if(wantToEdit){
     return <form className="flex justify-between mt-2">
-    <input type="text" className="flex-1 rounded-sm bg-transparent border border-white px-2 py-2 text-white" value={newTitle} onChange={(event)=>{setNewTitle(event.target.value)}}/>
+    <input type="text" className="flex-1 rounded-sm bg-transparent border border-white px-2 py-2 text-white text-lg" value={newTitle} onChange={(event)=>{setNewTitle(event.target.value)}}/>
     <input type="submit" value="Add" onClick={editTask} className="hidden"/>
   </form>
   }
@@ -61,7 +61,7 @@ const Item = ({ todo }) => {
   return <div className="flex justify-between py-2 px-2 rounded-md hover:bg-zinc-900">
     <div className="flex justify-center items-center">
       <div className={`w-3 h-3 mr-2 border rounded-full cursor-pointer ${isCompleted ? 'bg-green-200' : ''}`} onClick={handleCheckbox} />
-      <p className={`text-2md text-white ${isCompleted ? 'line-through' : ''}`}>{todo.title}</p>
+      <p className={`text-lg text-white ${isCompleted ? 'line-through' : ''}`}>{todo.title}</p>
     </div>
     <div className="flex justify-center items-center">
       <svg
