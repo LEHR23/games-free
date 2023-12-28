@@ -62,9 +62,15 @@ const Item = ({ todo }) => {
 
   if (wantToEdit) {
     return <><form className="flex justify-between mt-2">
-      <input type="text" maxlength='100'
+      <input type="text" maxLength='100'
         className="flex-1 rounded-sm bg-transparent border border-white px-2 py-2 text-white text-lg"
-        value={newTitle} onChange={(event) => { setNewTitle(event.target.value) }} />
+        value={newTitle} onChange={(event) => { 
+            setNewTitle(event.target.value) 
+          }} onKeyUpCapture={()=>{
+            if(event.key === 'Escape'){
+              setWantToEdit(false)
+            }
+          }}/>
       <input type="submit" value="Add" onClick={editTask} className="hidden" />
     </form>
     {
