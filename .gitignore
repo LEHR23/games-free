@@ -6,6 +6,8 @@ dist/
 
 # dependencies
 node_modules/
+.netlify/
+.firbase
 
 # logs
 npm-debug.log*
