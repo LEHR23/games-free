@@ -1,6 +1,6 @@
 import { ID } from 'appwrite';
 import { databases } from '../../config/appwrite';
-
+export const prerender = false;
 export async function GET() {
   const promise = databases.listDocuments(import.meta.env.APPWRITE_DATABASE, '658cc01e03cf6fd4f18f');
   let response = await promise.then(function (response) {
